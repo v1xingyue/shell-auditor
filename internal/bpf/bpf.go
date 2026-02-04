@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"fmt"
 	"net"
-	"os"
 	"syscall"
 	"unsafe"
 )
@@ -256,14 +255,13 @@ func ipToString(b []byte) string {
 // GetUsername 获取用户名
 func GetUsername(uid uint32) string {
 	uidStr := fmt.Sprintf("%d", uid)
-	// 使用C库函数获取用户名
+	// 使用 getpwuid 系统调用获取用户名
 	buf := make([]byte, 1024)
-	_, _, errno := syscall.Syscall6(
+	_, _, errno := syscall.Syscall(
 		syscall.SYS_GETPWUID,
 		uintptr(uid),
 		uintptr(unsafe.Pointer(&buf[0])),
 		uintptr(len(buf)),
-		0, 0, 0,
 	)
 	if errno != 0 {
 		return uidStr

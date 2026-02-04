@@ -176,6 +176,7 @@ func (s *Shell) handleBuiltinCommand(cmd string, args []string) error {
 	default:
 		return fmt.Errorf("builtin command not implemented: %s", cmd)
 	}
+	return nil
 }
 
 // handleCD 处理cd命令
