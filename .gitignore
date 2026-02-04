@@ -1,0 +1,37 @@
+# Binaries
+shell-auditor
+shell-auditor-*
+
+# Go build artifacts
+*.o
+*.so
+*.a
+*.exe
+*.test
+*.out
+
+# BPF generated files
+internal/bpf/bpf_*.go
+internal/bpf/bpf_*.o
+
+# Go module cache
+go.sum
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.log.*
+
+# Temporary files
+tmp/
+temp/
